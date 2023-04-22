@@ -1,0 +1,10 @@
+const firebaseConfig = {
+  apiKey: "AIzaSyA5D7qVxtaxppmIwBVJVxZRS3ycMmuakfo",
+  authDomain: "race-car-tracking-app.firebaseapp.com",
+  projectId: "race-car-tracking-app",
+  storageBucket: "race-car-tracking-app.appspot.com",
+  messagingSenderId: "262290781468",
+  appId: "1:262290781468:web:506776e0beac470190b6d9"
+};
+
+export default firebaseConfig;
