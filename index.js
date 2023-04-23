@@ -31,20 +31,23 @@ return DataList;
 }
 
 //Function to write to DB - Hard code
-async function addToCollection(db, colName) {
-    const data = {
-            studentName: 'Ama',
-            age: 24
-    };
-    const UUID = (new Date()).getTime();
-    await setDoc(doc(db, colName, UUID.toString()), data);
-}
+// async function addToCollection(db, colName) {
+//     const data = {
+//             studentName: 'Ama',
+//             age: 24
+//     };
+//     const UUID = (new Date()).getTime();
+//     await setDoc(doc(db, colName, UUID.toString()), data);
+// }
 
 //Function to write to DB 
 async function writeData(db, colName, req) {
 
     const data = {
 
+        carID: req.body.carID,
+        driver: req.body.driver,
+        carModel: req.body.carModel,
         latitude: req.body.latitude,
         longitude: req.body.longitude,
         altitude: req.body.altitude,
@@ -57,7 +60,7 @@ async function writeData(db, colName, req) {
 }
 
 api.get('/db', (req, res) => {
-    getCollection(dblite, "carData").then(
+    getCollection(dblite, "data").then(
         value => { res.send(value); }
     ).catch(
         err => {
@@ -75,7 +78,7 @@ api.get('/', (req, res) => {
 });
 
 api.get('/db', (req, res) => {
-    getCollection(db, "carData").then(
+    getCollection(db, "data").then(
     value => {res.send(value);}
 ).catch(
     err => {
@@ -99,7 +102,7 @@ api.get('/db', (req, res) => {
 
 api.post('/write', (req, res) => {
     console.log("POST");
-    writeData(db, "carData", req).then(
+    writeData(db, "data", req).then(
         value => { res.send("Done"); }
     ).catch(
         err => {
